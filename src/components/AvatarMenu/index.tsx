@@ -6,7 +6,7 @@ import {
   Button,
   Divider,
   Tooltip,
-  Typography
+  Typography,
 } from "@mui/material";
 import { indigo } from "@mui/material/colors";
 import Menu from "@mui/material/Menu";
@@ -39,7 +39,7 @@ const stringAvatar = (user: User) => {
   );
   return {
     sx: { bgcolor: `rgb(${r},${g},${b})`, cursor: "pointer" },
-    children: initials
+    children: initials,
   };
 };
 
@@ -68,11 +68,11 @@ const AvatarMenu = (props: AvatarMenuProps) => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "left"
+          horizontal: "left",
         }}
         transformOrigin={{
           vertical: "bottom",
-          horizontal: "left"
+          horizontal: "left",
         }}
       >
         <Box display="flex" flexDirection="column" alignItems="center" p={1}>
@@ -126,7 +126,7 @@ const AvatarMenu = (props: AvatarMenuProps) => {
             size="small"
             style={{
               color: indigo[500],
-              textTransform: "none"
+              textTransform: "none",
             }}
           >
             Data Privacy Statement
@@ -136,7 +136,7 @@ const AvatarMenu = (props: AvatarMenuProps) => {
             size="small"
             style={{
               color: indigo[500],
-              textTransform: "none"
+              textTransform: "none",
             }}
           >
             Imprint

@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import {
   ActionError,
   ActionResultStatus,
-  ActionSuccess
+  ActionSuccess,
 } from "../../../types/global";
 import { resultOrError, ResultOrErrorResponse } from "../../../utils/global";
 
@@ -29,7 +29,7 @@ export default class UserStore {
             resolve({
               firstName: "Aria",
               lastName: "Test",
-              eMail: "linda.bolt@osapiens.com"
+              eMail: "linda.bolt@osapiens.com",
             }),
           500
         )
@@ -39,7 +39,7 @@ export default class UserStore {
     if (!!error) {
       return {
         status: ActionResultStatus.ERROR,
-        error
+        error,
       } as ActionError;
     }
 
@@ -50,13 +50,13 @@ export default class UserStore {
 
       return {
         status: ActionResultStatus.SUCCESS,
-        result: result
+        result: result,
       } as ActionSuccess<User>;
     }
 
     return {
       status: ActionResultStatus.ERROR,
-      error: "Something went wrong."
+      error: "Something went wrong.",
     } as ActionError;
   }
 }
