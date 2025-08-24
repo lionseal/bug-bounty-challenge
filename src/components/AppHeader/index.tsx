@@ -43,9 +43,17 @@ const AppHeader = React.forwardRef((props: AppHeaderProps, ref) => {
   const countdownSeconds = (countdown % 60).toFixed(0).padStart(2, "0");
 
   useEffect(() => {
-    setInterval(() => {
+    let isMounted = true;
+    let interval = setInterval(() => {
+      if (!isMounted) {
+        clearInterval(interval);
+        return;
+      }
       setCount((c) => c + 1);
     }, 1000);
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
