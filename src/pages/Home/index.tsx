@@ -8,40 +8,50 @@ import { Trans, useTranslation } from "react-i18next";
 
 const Home = () => {
   const { t } = useTranslation("app");
+  // Missing translations, would be nice to have
   const issues = [
     {
-      icon: "🐞",
+      icon: "✅",
       title:
         'Console error: Warning: Each child in a list should have a unique "key" prop.',
       description:
-        "Hope you are able to find what is causing this error, as it is annoying."
+        "Hope you are able to find what is causing this error, as it is annoying.",
+      details: "Fixed adding key={index} to Home>ListItem",
     },
     {
-      icon: "🐞",
+      icon: "✅",
       title:
         'The word "known" should be displayed bold in the introduction text.',
       description:
-        "When implementing a solution, please ensure to not change the i18n text."
+        "When implementing a solution, please ensure to not change the i18n text.",
+      details:
+        "Added <Trans> component from i18n package and replaced b with strong",
     },
     {
-      icon: "🐞",
+      icon: "✅",
       title:
         "User avatar in app bar is missing, although user should be fetched on app start correctly.",
       description:
-        "On app start we load the current user object via a MobX store, but for any reason the user avatar is not displayed in the top right of the app bar. Attention: When solving this issue, you might will be confronted with a second bug."
+        "On app start we load the current user object via a MobX store, but for any reason the user avatar is not displayed in the top right of the app bar. Attention: When solving this issue, you might will be confronted with a second bug.",
+      details:
+        "Fixed typo in user store and wrapped AvatarMenu with React.forwardRef",
     },
     {
-      icon: "🐞",
+      icon: "✅",
       title: "Optional: Countdown is broken sometimes (hard to reproduce).",
       description:
-        "Some developers mentioned that the countdown in the app header behaves strange sometimes, but unfortunately they were not able to reproduce this glitch reliably, maybe you find the root cause."
+        "Some developers mentioned that the countdown in the app header behaves strange sometimes, but unfortunately they were not able to reproduce this glitch reliably, maybe you find the root cause.",
+      details:
+        "Only managed to see one issue while fixing previous bug, modified useEffect to clear timeouts",
     },
     {
-      icon: "⭐️",
+      icon: "✅",
       title: "Optional: It would be great to be able to switch the language.",
       description:
-        "Please add a language select control in the app bar to swicth the UI language between english and german."
-    }
+        "Please add a language select control in the app bar to swicth the UI language between english and german.",
+      details:
+        "Implemented a simple Language bar and added DE translations (using google translate). Note: this list is missing translations",
+    },
   ];
 
   return (
@@ -62,10 +72,16 @@ const Home = () => {
               <Typography variant="h5" sx={{ p: 2 }}>
                 {issue.icon}
               </Typography>
-              <ListItemText
-                primary={issue.title}
-                secondary={issue.description}
-              />
+              <div>
+                <ListItemText
+                  primary={issue.title}
+                  secondary={issue.description}
+                />
+                <ListItemText
+                  primary={issue.details}
+                  sx={{ color: "#4bc676" }}
+                />
+              </div>
             </ListItem>
           ))}
         </List>
